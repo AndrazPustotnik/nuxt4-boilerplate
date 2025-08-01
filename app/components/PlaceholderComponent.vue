@@ -1,8 +1,6 @@
 <!-- components/PlaceholderComponent.vue -->
 <template>
-  <div class="text-gray-500 italic">
-    Placeholder Component
-  </div>
+  <div class="text-gray-500 italic">Placeholder Component</div>
 </template>
 
 <script setup lang="ts">
