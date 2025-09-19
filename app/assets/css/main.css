@@ -1,6 +1,16 @@
-@import "tailwindcss";
+/* Nuxt UI theme entry
+   https://ui.nuxt.com/getting-started/theme */
+@import "tailwindcss"; /* Tailwind v4 engine + preflight + utilities */
+@import "tw-animate-css"; /* Animation plugin (replace with tailwindcss-animate if desired) */
 
+/* -------------------------------------------
+   1) Design tokens for Tailwind utilities
+   -------------------------------------------
+   @theme   : global tokens (runtime-mutable)
+   @theme inline : inline mappings/aliases
+   ------------------------------------------- */
 @theme {
+  /* Primary color palette */
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
@@ -11,6 +21,65 @@
   --color-primary-700: #1d4ed8;
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
+  --color-primary: var(--color-primary-500); /* feeds Tailwind --ui-primary */
 
-  --color-primary: var(--color-primary-500);
+  /* --color-primary: light-dark(red, magenta); Example of light/dark mode switch */
+
+  --ui-radius: 0.25rem; /* base token 0.25rem */
+
+  /* Border-radius scale (built from --ui-radius) */
+  --radius-xs: calc(var(--ui-radius) * 0.5); /* 0.125rem */
+  --radius-sm: var(--ui-radius); /* 0.25rem */
+  --radius-md: calc(var(--ui-radius) * 1.5); /* 0.375rem */
+  --radius-lg: calc(var(--ui-radius) * 2); /* 0.5rem  */
+  --radius-xl: calc(var(--ui-radius) * 3); /* 0.75rem */
+  --radius-2xl: calc(var(--ui-radius) * 4); /* 1rem   */
+  --radius-3xl: calc(var(--ui-radius) * 6); /* 1.5rem */
 }
+
+/* -------------------------------------------
+   2) Tailwind layers (optional overrides)
+   ------------------------------------------- */
+@layer base {
+  /* Element-level defaults go here, e.g.:
+     p { @apply text-base leading-relaxed; } */
+}
+
+@layer components {
+  /* Reusable component classes, e.g.:
+     .btn-primary { @apply px-4 py-2 bg-primary-500 text-white; } */
+}
+
+@layer utilities {
+  /* Single-purpose helpers, e.g.:
+     .debug-outline { outline: 1px dashed red; } */
+}
+
+/* -------------------------------------------
+   3) Runtime theme variables
+   -------------------------------------------
+   These plain selectors compile *after* all
+   Tailwind layers and override tokens above.
+   ------------------------------------------- */
+:root {
+  /* Light-mode CSS variable values (if overriding defaults) */
+}
+
+.dark {
+  /* Dark-mode overrides for the same variables */
+}
+
+
+/* @theme {
+  --color-primary: #1d4ed8;
+}
+
+.dark {
+  @theme {
+    --color-primary: #60a5fa;
+  }
+}
+
+vs
+
+--color-primary: light-dark(#1d4ed8, #60a5fa); */
